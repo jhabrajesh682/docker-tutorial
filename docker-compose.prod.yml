@@ -1,6 +1,6 @@
 version: "3"
 services:
-   nginx:
+  nginx:
     ports:
       - "80:80"
   node-app:
@@ -10,4 +10,11 @@ services:
         NODE_ENV: production
     environment:
       - NODE_ENV=production
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
     command: nodemon index.js
+
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
